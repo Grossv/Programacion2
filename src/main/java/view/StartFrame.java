@@ -84,7 +84,7 @@ public class StartFrame extends javax.swing.JFrame {
         
         pnlContent.add(pnlCalculadora, BorderLayout.CENTER);
         this.setVisible(true);
-        //this.validate(); TAMBIEN SE PUEDE USAR PARA LIMPIAR EL BUGGER
+        //this.validate(); TAMBIEN SE PUEDE USAR PARA LIMPIAR EL BUFFER
     }//GEN-LAST:event_btnCalculadoraActionPerformed
 
     /**
