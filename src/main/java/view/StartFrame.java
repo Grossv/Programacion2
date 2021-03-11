@@ -5,17 +5,22 @@
  */
 package view;
 
+import java.awt.BorderLayout;
+import view.views.panel.pnlCalculadora;
+
 /**
  *
  * @author Sistemas-03
  */
 public class StartFrame extends javax.swing.JFrame {
 
+    private pnlCalculadora pnlCalculadora;
     /**
      * Creates new form StartFrame
      */
     public StartFrame() {
         initComponents();
+        
     }
 
     /**
@@ -27,13 +32,60 @@ public class StartFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlLeft = new javax.swing.JPanel();
+        btnCalculadora = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        pnlContent = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("My App");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        getContentPane().setLayout(new java.awt.FlowLayout());
+        getContentPane().setLayout(new java.awt.BorderLayout(3, 2));
 
-        pack();
+        pnlLeft.setBackground(new java.awt.Color(153, 153, 153));
+        pnlLeft.setPreferredSize(new java.awt.Dimension(120, 100));
+        pnlLeft.setLayout(new java.awt.GridLayout(3, 1, 2, 3));
+
+        btnCalculadora.setText("Calculadora");
+        btnCalculadora.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCalculadora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalculadoraActionPerformed(evt);
+            }
+        });
+        pnlLeft.add(btnCalculadora);
+
+        jButton2.setText("jButton2");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlLeft.add(jButton2);
+
+        jButton3.setText("jButton3");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlLeft.add(jButton3);
+
+        getContentPane().add(pnlLeft, java.awt.BorderLayout.LINE_START);
+
+        pnlContent.setBackground(new java.awt.Color(255, 255, 255));
+        pnlContent.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(pnlContent, java.awt.BorderLayout.CENTER);
+
+        setSize(new java.awt.Dimension(416, 339));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCalculadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculadoraActionPerformed
+        if (pnlCalculadora == null) {
+            pnlCalculadora = new pnlCalculadora();
+        }
+        if (pnlContent.getComponentCount() > 0) {
+            pnlContent.remove(0);
+        }
+        
+        pnlContent.add(pnlCalculadora, BorderLayout.CENTER);
+        this.setVisible(true);
+        //this.validate(); TAMBIEN SE PUEDE USAR PARA LIMPIAR EL BUGGER
+    }//GEN-LAST:event_btnCalculadoraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -71,5 +123,10 @@ public class StartFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCalculadora;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JPanel pnlContent;
+    private javax.swing.JPanel pnlLeft;
     // End of variables declaration//GEN-END:variables
 }
