@@ -6,7 +6,7 @@
 package view;
 
 import java.awt.BorderLayout;
-import view.views.panel.pnlCalculadora;
+import view.views.panel.*;
 
 /**
  *
@@ -15,12 +15,15 @@ import view.views.panel.pnlCalculadora;
 public class StartFrame extends javax.swing.JFrame {
 
     private pnlCalculadora pnlCalculadora;
+    private pnlTemperatura pnlTemperatura;
+    private pnlMoney pnlMoney;
+
     /**
      * Creates new form StartFrame
      */
     public StartFrame() {
         initComponents();
-        
+
     }
 
     /**
@@ -34,8 +37,8 @@ public class StartFrame extends javax.swing.JFrame {
 
         pnlLeft = new javax.swing.JPanel();
         btnCalculadora = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnTemperatura = new javax.swing.JButton();
+        btnMoney = new javax.swing.JButton();
         pnlContent = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,7 +50,7 @@ public class StartFrame extends javax.swing.JFrame {
         pnlLeft.setPreferredSize(new java.awt.Dimension(120, 100));
         pnlLeft.setLayout(new java.awt.GridLayout(3, 1, 2, 3));
 
-        btnCalculadora.setText("Calculadora");
+        btnCalculadora.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgCalculator.png")); // NOI18N
         btnCalculadora.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCalculadora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,13 +59,23 @@ public class StartFrame extends javax.swing.JFrame {
         });
         pnlLeft.add(btnCalculadora);
 
-        jButton2.setText("jButton2");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pnlLeft.add(jButton2);
+        btnTemperatura.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgTemperature.png")); // NOI18N
+        btnTemperatura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTemperatura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTemperaturaActionPerformed(evt);
+            }
+        });
+        pnlLeft.add(btnTemperatura);
 
-        jButton3.setText("jButton3");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pnlLeft.add(jButton3);
+        btnMoney.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgMoney.png")); // NOI18N
+        btnMoney.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMoney.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoneyActionPerformed(evt);
+            }
+        });
+        pnlLeft.add(btnMoney);
 
         getContentPane().add(pnlLeft, java.awt.BorderLayout.LINE_START);
 
@@ -75,17 +88,50 @@ public class StartFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCalculadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculadoraActionPerformed
+        pnlContent.removeAll();
+        pnlContent.revalidate();
+        pnlContent.repaint();
         if (pnlCalculadora == null) {
             pnlCalculadora = new pnlCalculadora();
         }
         if (pnlContent.getComponentCount() > 0) {
             pnlContent.remove(0);
         }
-        
+
         pnlContent.add(pnlCalculadora, BorderLayout.CENTER);
         this.setVisible(true);
         //this.validate(); TAMBIEN SE PUEDE USAR PARA LIMPIAR EL BUFFER
     }//GEN-LAST:event_btnCalculadoraActionPerformed
+
+    private void btnTemperaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemperaturaActionPerformed
+        pnlContent.removeAll();
+        pnlContent.revalidate();
+        pnlContent.repaint();
+        if (pnlTemperatura == null) {
+            pnlTemperatura = new pnlTemperatura();
+        }
+        if (pnlContent.getComponentCount() > 0) {
+            pnlContent.remove(0);
+        }
+
+        pnlContent.add(pnlTemperatura, BorderLayout.CENTER);
+        this.setVisible(true);
+    }//GEN-LAST:event_btnTemperaturaActionPerformed
+
+    private void btnMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoneyActionPerformed
+        pnlContent.removeAll();
+        pnlContent.revalidate();
+        pnlContent.repaint();
+        if (pnlMoney == null) {
+            pnlMoney = new pnlMoney();
+        }
+        if (pnlContent.getComponentCount() > 0) {
+            pnlContent.remove(0);
+        }
+
+        pnlContent.add(pnlMoney, BorderLayout.CENTER);
+        this.setVisible(true);
+    }//GEN-LAST:event_btnMoneyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,8 +170,8 @@ public class StartFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalculadora;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnMoney;
+    private javax.swing.JButton btnTemperatura;
     private javax.swing.JPanel pnlContent;
     private javax.swing.JPanel pnlLeft;
     // End of variables declaration//GEN-END:variables

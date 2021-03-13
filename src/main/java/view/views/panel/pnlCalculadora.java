@@ -39,10 +39,10 @@ public class pnlCalculadora extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel1 = new javax.swing.JPanel();
+        pnlBotones = new javax.swing.JPanel();
         btnCalcular = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        pnlContent = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtNumero1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -52,8 +52,8 @@ public class pnlCalculadora extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        pnlBotones.setBackground(new java.awt.Color(153, 153, 153));
+        pnlBotones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
         btnCalcular.setText("Calcular");
         btnCalcular.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 102, 102)));
@@ -64,7 +64,7 @@ public class pnlCalculadora extends javax.swing.JPanel {
                 btnCalcularActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCalcular);
+        pnlBotones.add(btnCalcular);
 
         btnLimpiar.setText("CE");
         btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -73,18 +73,18 @@ public class pnlCalculadora extends javax.swing.JPanel {
                 btnLimpiarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLimpiar);
+        pnlBotones.add(btnLimpiar);
 
-        add(jPanel1, java.awt.BorderLayout.PAGE_END);
+        add(pnlBotones, java.awt.BorderLayout.PAGE_END);
 
-        jPanel2.setLayout(new java.awt.GridBagLayout());
+        pnlContent.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Numero 1");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
-        jPanel2.add(jLabel1, gridBagConstraints);
+        pnlContent.add(jLabel1, gridBagConstraints);
 
         txtNumero1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -100,7 +100,7 @@ public class pnlCalculadora extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
-        jPanel2.add(txtNumero1, gridBagConstraints);
+        pnlContent.add(txtNumero1, gridBagConstraints);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Numero 2");
@@ -109,7 +109,7 @@ public class pnlCalculadora extends javax.swing.JPanel {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
-        jPanel2.add(jLabel2, gridBagConstraints);
+        pnlContent.add(jLabel2, gridBagConstraints);
 
         txtnumero2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -124,7 +124,7 @@ public class pnlCalculadora extends javax.swing.JPanel {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
-        jPanel2.add(txtnumero2, gridBagConstraints);
+        pnlContent.add(txtnumero2, gridBagConstraints);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Resultado");
@@ -133,7 +133,7 @@ public class pnlCalculadora extends javax.swing.JPanel {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
-        jPanel2.add(jLabel3, gridBagConstraints);
+        pnlContent.add(jLabel3, gridBagConstraints);
 
         txtResultado.setEditable(false);
         txtResultado.setBackground(new java.awt.Color(255, 255, 255));
@@ -141,11 +141,11 @@ public class pnlCalculadora extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
-        jPanel2.add(txtResultado, gridBagConstraints);
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(11, 9, 11, 9);
+        pnlContent.add(txtResultado, gridBagConstraints);
 
-        add(jPanel2, java.awt.BorderLayout.CENTER);
+        add(pnlContent, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
@@ -203,8 +203,8 @@ public class pnlCalculadora extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel pnlBotones;
+    private javax.swing.JPanel pnlContent;
     private javax.swing.JTextField txtNumero1;
     private javax.swing.JTextField txtResultado;
     private javax.swing.JTextField txtnumero2;
