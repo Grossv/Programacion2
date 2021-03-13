@@ -5,11 +5,22 @@
  */
 package view.views.panel;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.Optional;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import vapi.ValidatorMaster;
+import static vapi.ValidatorMaster.letterValidator;
+
 /**
  *
  * @author Sistemas-03
  */
 public class pnlCalculadora extends javax.swing.JPanel {
+
+    String contenido;
 
     /**
      * Creates new form pnlCalculadora
@@ -74,6 +85,15 @@ public class pnlCalculadora extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
         jPanel2.add(jLabel1, gridBagConstraints);
+
+        txtNumero1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNumero1KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumero1KeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -90,6 +110,15 @@ public class pnlCalculadora extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
         jPanel2.add(jLabel2, gridBagConstraints);
+
+        txtnumero2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtnumero2KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnumero2KeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -107,6 +136,8 @@ public class pnlCalculadora extends javax.swing.JPanel {
         jPanel2.add(jLabel3, gridBagConstraints);
 
         txtResultado.setEditable(false);
+        txtResultado.setBackground(new java.awt.Color(255, 255, 255));
+        txtResultado.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -121,7 +152,7 @@ public class pnlCalculadora extends javax.swing.JPanel {
         Double n1, n2, result;
         n1 = Double.parseDouble(txtNumero1.getText());
         n2 = Double.parseDouble(txtnumero2.getText());
-        txtResultado.setText(String.valueOf(suma(n1,n2)));
+        txtResultado.setText(String.valueOf(suma(n1, n2)));
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -130,9 +161,41 @@ public class pnlCalculadora extends javax.swing.JPanel {
         txtnumero2.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+    private void txtNumero1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumero1KeyPressed
+//        if (!letterValidator(txtNumero1.getText().trim())) {
+//            JOptionPane.showMessageDialog(txtNumero1, "Ingrese solo numeros!");
+//
+//            contenido = txtNumero1.getText();
+//            if (contenido.length() > 0) {
+//                contenido = contenido.substring(0, contenido.length() - 2);
+//                txtNumero1.setText(contenido);
+//            }
+//        }
+                //ESTA ES OTRA OPCION ALTERNATIVA
+    
+        ValidatorMaster.soloNumeros(txtNumero1);
+    }//GEN-LAST:event_txtNumero1KeyPressed
 
-    private double suma(double a, double b){
-        return a+b;
+    private void txtNumero1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumero1KeyTyped
+//        char validar = evt.getKeyChar();
+//        String num1 = txtNumero1.getText();
+//
+//        if (Character.isLetter(validar)) {
+//            getToolkit().beep();
+//            evt.consume();
+//        }
+        /*Lo anterior es para hacer desde el propio codigo la validacion*/
+    }//GEN-LAST:event_txtNumero1KeyTyped
+
+    private void txtnumero2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnumero2KeyTyped
+    }//GEN-LAST:event_txtnumero2KeyTyped
+
+    private void txtnumero2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnumero2KeyPressed
+        ValidatorMaster.soloNumeros(txtnumero2);
+    }//GEN-LAST:event_txtnumero2KeyPressed
+
+    private double suma(double a, double b) {
+        return a + b;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;
