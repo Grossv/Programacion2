@@ -58,7 +58,7 @@ public class StartFrame extends javax.swing.JFrame {
         pnlLeft.setLayout(new java.awt.GridLayout(3, 1, 2, 3));
 
         btnCalculadora.setBackground(new java.awt.Color(255, 255, 255));
-        btnCalculadora.setText("Calculadora");
+        btnCalculadora.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgCalculator.png")); // NOI18N
         btnCalculadora.setBorder(null);
         btnCalculadora.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCalculadora.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +69,7 @@ public class StartFrame extends javax.swing.JFrame {
         pnlLeft.add(btnCalculadora);
 
         btnTemperatura.setBackground(new java.awt.Color(255, 255, 255));
-        btnTemperatura.setText("Temperatura");
+        btnTemperatura.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgTemperature.png")); // NOI18N
         btnTemperatura.setBorder(null);
         btnTemperatura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTemperatura.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +80,7 @@ public class StartFrame extends javax.swing.JFrame {
         pnlLeft.add(btnTemperatura);
 
         btnMoney.setBackground(new java.awt.Color(255, 255, 255));
-        btnMoney.setText("Moneda");
+        btnMoney.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgMoney.png")); // NOI18N
         btnMoney.setBorder(null);
         btnMoney.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMoney.addActionListener(new java.awt.event.ActionListener() {

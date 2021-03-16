@@ -5,7 +5,10 @@
  */
 package view.views.panel;
 
+import java.awt.Color;
 import java.text.DecimalFormat;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import vapi.ValidatorMaster;
 
 /**
@@ -13,7 +16,6 @@ import vapi.ValidatorMaster;
  * @author Usuario
  */
 public class pnlTemperatura extends javax.swing.JPanel {
-    
 
     /**
      * Creates new form pnlTemperatura
@@ -74,6 +76,7 @@ public class pnlTemperatura extends javax.swing.JPanel {
 
         lnlTitle.setText("Ingresa los datos a Convertir");
 
+        txtGrados.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtGrados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGradosActionPerformed(evt);
@@ -133,7 +136,7 @@ public class pnlTemperatura extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(71, Short.MAX_VALUE)
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addComponent(lnlTitle)
                 .addGap(18, 18, 18)
                 .addComponent(txtGrados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,7 +157,7 @@ public class pnlTemperatura extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbGradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGradosActionPerformed
-        
+
     }//GEN-LAST:event_cmbGradosActionPerformed
 
     private void txtResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResultadoActionPerformed
@@ -167,19 +170,23 @@ public class pnlTemperatura extends javax.swing.JPanel {
 
     private void txtGradosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGradosKeyPressed
         ValidatorMaster.soloNumeros(txtGrados);
+        txtGrados.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
     }//GEN-LAST:event_txtGradosKeyPressed
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
-        double grados = Double.parseDouble(txtGrados.getText());
-        
-        if(cmbGrados.getSelectedItem().toString().equals("°C   -->   °F")){
-            double celcius = 32 + (9* grados / 5);
-            txtResultado.setText(String.valueOf(celcius));
-            lblElije.setText("°F");
-        }else if(cmbGrados.getSelectedItem().toString().equals("°F   -->   °C")){
-            double fahrenheit = (grados - 32) * 5 / 9;
-            txtResultado.setText(String.valueOf(fahrenheit));
-            lblElije.setText("°C");
+        if (txtGrados.getText().equals("")) {    
+            txtGrados.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+        } else {
+            double grados = Double.parseDouble(txtGrados.getText());
+            if (cmbGrados.getSelectedItem().toString().equals("°C   -->   °F")) {
+                double celcius = 32 + (9 * grados / 5);
+                txtResultado.setText(String.valueOf(celcius));
+                lblElije.setText("°F");
+            } else if (cmbGrados.getSelectedItem().toString().equals("°F   -->   °C")) {
+                double fahrenheit = (grados - 32) * 5 / 9;
+                txtResultado.setText(String.valueOf(fahrenheit));
+                lblElije.setText("°C");
+            }
         }
     }//GEN-LAST:event_btnCalcularActionPerformed
 
@@ -188,7 +195,6 @@ public class pnlTemperatura extends javax.swing.JPanel {
         txtResultado.setText("");
         lblElije.setText("");
     }//GEN-LAST:event_btnNuevoActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

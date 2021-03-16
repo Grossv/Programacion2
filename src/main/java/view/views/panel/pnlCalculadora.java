@@ -5,10 +5,12 @@
  */
 package view.views.panel;
 
+import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Optional;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import vapi.ValidatorMaster;
@@ -87,6 +89,7 @@ public class pnlCalculadora extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
         pnlContent.add(jLabel1, gridBagConstraints);
 
+        txtNumero1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtNumero1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNumero1KeyPressed(evt);
@@ -112,6 +115,7 @@ public class pnlCalculadora extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
         pnlContent.add(jLabel2, gridBagConstraints);
 
+        txtnumero2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtnumero2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtnumero2KeyPressed(evt);
@@ -138,7 +142,7 @@ public class pnlCalculadora extends javax.swing.JPanel {
 
         txtResultado.setEditable(false);
         txtResultado.setBackground(new java.awt.Color(255, 255, 255));
-        txtResultado.setBorder(null);
+        txtResultado.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -150,10 +154,17 @@ public class pnlCalculadora extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
-        Double n1, n2, result;
-        n1 = Double.parseDouble(txtNumero1.getText());
-        n2 = Double.parseDouble(txtnumero2.getText());
-        txtResultado.setText(String.valueOf(suma(n1, n2)));
+        if (txtNumero1.getText().equals("")) {
+            txtNumero1.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+        }
+        if (txtnumero2.getText().equals("")) {
+            txtnumero2.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+        } else {
+            Double n1, n2, result;
+            n1 = Double.parseDouble(txtNumero1.getText());
+            n2 = Double.parseDouble(txtnumero2.getText());
+            txtResultado.setText(String.valueOf(suma(n1, n2)));
+        }
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -164,6 +175,7 @@ public class pnlCalculadora extends javax.swing.JPanel {
 
     private void txtNumero1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumero1KeyPressed
         ValidatorMaster.soloNumeros(txtNumero1);
+        txtNumero1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }//GEN-LAST:event_txtNumero1KeyPressed
 
     private void txtNumero1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumero1KeyTyped
@@ -174,6 +186,7 @@ public class pnlCalculadora extends javax.swing.JPanel {
 
     private void txtnumero2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnumero2KeyPressed
         ValidatorMaster.soloNumeros(txtnumero2);
+        txtnumero2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }//GEN-LAST:event_txtnumero2KeyPressed
 
     private double suma(double a, double b) {

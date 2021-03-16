@@ -5,6 +5,9 @@
  */
 package view.views.panel;
 
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.UIManager;
 import vapi.ValidatorMaster;
 
 /**
@@ -86,6 +89,7 @@ public class pnlMoney extends javax.swing.JPanel {
         lnlTitle.setText("Ingresa los datos a Convertir");
         add(lnlTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
 
+        txtMoney.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtMoney.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMoneyActionPerformed(evt);
@@ -129,6 +133,7 @@ public class pnlMoney extends javax.swing.JPanel {
 
     private void txtMoneyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMoneyKeyPressed
         ValidatorMaster.soloNumeros(txtMoney);
+        txtMoney.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
     }//GEN-LAST:event_txtMoneyKeyPressed
 
     private void cmbMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMoneyActionPerformed
@@ -140,16 +145,20 @@ public class pnlMoney extends javax.swing.JPanel {
     }//GEN-LAST:event_txtResultadoActionPerformed
 
     private void btnConvertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertirActionPerformed
-        double money = Double.parseDouble(txtMoney.getText());
+        if (txtMoney.getText().equals("")) {
+            txtMoney.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+        } else {
+            double money = Double.parseDouble(txtMoney.getText());
 
-        if (cmbMoney.getSelectedItem().toString().equals("$   -->   c$")) {
-            double cordobas = (35.14) * money;
-            txtResultado.setText(String.valueOf(cordobas));
-            lblElije.setText("c$");
-        } else if (cmbMoney.getSelectedItem().toString().equals("c$   -->   $")) {
-            double bucks = (money / 35.14);
-            txtResultado.setText(String.valueOf(bucks));
-            lblElije.setText("$");
+            if (cmbMoney.getSelectedItem().toString().equals("$   -->   c$")) {
+                double cordobas = (35.14) * money;
+                txtResultado.setText(String.valueOf(cordobas));
+                lblElije.setText("c$");
+            } else if (cmbMoney.getSelectedItem().toString().equals("c$   -->   $")) {
+                double bucks = (money / 35.14);
+                txtResultado.setText(String.valueOf(bucks));
+                lblElije.setText("$");
+            }
         }
     }//GEN-LAST:event_btnConvertirActionPerformed
 
