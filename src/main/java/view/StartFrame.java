@@ -6,24 +6,31 @@
 package view;
 
 import java.awt.BorderLayout;
-import view.views.panel.*;
+import view.views.panel.pnlCalculadora;
+import view.views.panel.pnlMoney;
+import view.views.panel.pnlTemperatura;
+import controllers.*;
+import view.views.panel.pnlConversionTemplate;
 
 /**
  *
  * @author Sistemas-03
  */
 public class StartFrame extends javax.swing.JFrame {
-
+    
     private pnlCalculadora pnlCalculadora;
     private pnlTemperatura pnlTemperatura;
     private pnlMoney pnlMoney;
+    
+    private PnlTemperatureController pnlTemperatureController;
+    private pnlConversionTemplate pnlConversionTemplate1;
 
     /**
      * Creates new form StartFrame
      */
     public StartFrame() {
         initComponents();
-
+        
     }
 
     /**
@@ -51,7 +58,7 @@ public class StartFrame extends javax.swing.JFrame {
         pnlLeft.setLayout(new java.awt.GridLayout(3, 1, 2, 3));
 
         btnCalculadora.setBackground(new java.awt.Color(255, 255, 255));
-        btnCalculadora.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgCalculator.png")); // NOI18N
+        btnCalculadora.setText("Calculadora");
         btnCalculadora.setBorder(null);
         btnCalculadora.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCalculadora.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +69,7 @@ public class StartFrame extends javax.swing.JFrame {
         pnlLeft.add(btnCalculadora);
 
         btnTemperatura.setBackground(new java.awt.Color(255, 255, 255));
-        btnTemperatura.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgTemperature.png")); // NOI18N
+        btnTemperatura.setText("Temperatura");
         btnTemperatura.setBorder(null);
         btnTemperatura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTemperatura.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +80,7 @@ public class StartFrame extends javax.swing.JFrame {
         pnlLeft.add(btnTemperatura);
 
         btnMoney.setBackground(new java.awt.Color(255, 255, 255));
-        btnMoney.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgMoney.png")); // NOI18N
+        btnMoney.setText("Moneda");
         btnMoney.setBorder(null);
         btnMoney.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMoney.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +102,6 @@ public class StartFrame extends javax.swing.JFrame {
 
     private void btnCalculadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculadoraActionPerformed
         pnlContent.removeAll();
-        pnlContent.revalidate();
         pnlContent.repaint();
         if (pnlCalculadora == null) {
             pnlCalculadora = new pnlCalculadora();
@@ -103,7 +109,7 @@ public class StartFrame extends javax.swing.JFrame {
         if (pnlContent.getComponentCount() > 0) {
             pnlContent.remove(0);
         }
-
+        
         pnlContent.add(pnlCalculadora, BorderLayout.CENTER);
         this.setVisible(true);
         //this.validate(); TAMBIEN SE PUEDE USAR PARA LIMPIAR EL BUFFER
@@ -111,7 +117,6 @@ public class StartFrame extends javax.swing.JFrame {
 
     private void btnTemperaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemperaturaActionPerformed
         pnlContent.removeAll();
-        pnlContent.revalidate();
         pnlContent.repaint();
         if (pnlTemperatura == null) {
             pnlTemperatura = new pnlTemperatura();
@@ -122,11 +127,16 @@ public class StartFrame extends javax.swing.JFrame {
 
         pnlContent.add(pnlTemperatura, BorderLayout.CENTER);
         this.setVisible(true);
+
+//        Esta forma es la enseñada por el teacher
+//        if (pnlConversionTemplate1 == null) {
+//            pnlConversionTemplate1 = new pnlConversionTemplate();
+//            pnlTemperatureController = new pnlTemperatureController(pnlConversionTemplate1);
+//        }
     }//GEN-LAST:event_btnTemperaturaActionPerformed
 
     private void btnMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoneyActionPerformed
         pnlContent.removeAll();
-        pnlContent.revalidate();
         pnlContent.repaint();
         if (pnlMoney == null) {
             pnlMoney = new pnlMoney();
@@ -134,7 +144,7 @@ public class StartFrame extends javax.swing.JFrame {
         if (pnlContent.getComponentCount() > 0) {
             pnlContent.remove(0);
         }
-
+        
         pnlContent.add(pnlMoney, BorderLayout.CENTER);
         this.setVisible(true);
     }//GEN-LAST:event_btnMoneyActionPerformed

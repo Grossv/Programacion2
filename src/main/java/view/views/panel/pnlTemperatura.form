@@ -125,7 +125,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblResultado" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtResultado" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="lblElije" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
