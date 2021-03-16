@@ -30,7 +30,6 @@ public class pnlTemperatura extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         btnCalcular = new javax.swing.JButton();
@@ -38,10 +37,11 @@ public class pnlTemperatura extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         lnlTitle = new javax.swing.JLabel();
         txtGrados = new javax.swing.JTextField();
-        lblElije = new javax.swing.JLabel();
+        lblcomboBox = new javax.swing.JLabel();
         cmbGrados = new javax.swing.JComboBox<>();
         lblResultado = new javax.swing.JLabel();
         txtResultado = new javax.swing.JTextField();
+        lblElije = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(101, 141));
         setPreferredSize(new java.awt.Dimension(120, 141));
@@ -70,6 +70,8 @@ public class pnlTemperatura extends javax.swing.JPanel {
 
         add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
         lnlTitle.setText("Ingresa los datos a Convertir");
 
         txtGrados.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +85,7 @@ public class pnlTemperatura extends javax.swing.JPanel {
             }
         });
 
-        lblElije.setText("Elije una opción");
+        lblcomboBox.setText("Elije una opción");
 
         cmbGrados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "°C   -->   °F", "°F   -->   °C" }));
         cmbGrados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -115,15 +117,17 @@ public class pnlTemperatura extends javax.swing.JPanel {
                                 .addComponent(txtGrados, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lnlTitle))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblElije)
+                                .addComponent(lblcomboBox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cmbGrados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(102, 102, 102)
-                        .addComponent(lblResultado)))
+                        .addComponent(lblResultado))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(lblElije, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(176, 176, 176))
         );
         jPanel2Layout.setVerticalGroup(
@@ -135,12 +139,14 @@ public class pnlTemperatura extends javax.swing.JPanel {
                 .addComponent(txtGrados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblElije)
+                    .addComponent(lblcomboBox)
                     .addComponent(cmbGrados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblResultado)
                 .addGap(18, 18, 18)
-                .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblElije, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36))
         );
 
@@ -180,7 +186,7 @@ public class pnlTemperatura extends javax.swing.JPanel {
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         txtGrados.setText("");
         txtResultado.setText("");
-        lblElije.setText("Elije una opción");
+        lblElije.setText("");
     }//GEN-LAST:event_btnNuevoActionPerformed
 
 
@@ -193,6 +199,7 @@ public class pnlTemperatura extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblElije;
     private javax.swing.JLabel lblResultado;
+    private javax.swing.JLabel lblcomboBox;
     private javax.swing.JLabel lnlTitle;
     private javax.swing.JTextField txtGrados;
     private javax.swing.JTextField txtResultado;

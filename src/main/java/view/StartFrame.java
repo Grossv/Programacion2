@@ -46,11 +46,13 @@ public class StartFrame extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new java.awt.BorderLayout(3, 2));
 
-        pnlLeft.setBackground(new java.awt.Color(153, 153, 153));
+        pnlLeft.setBackground(new java.awt.Color(255, 255, 255));
         pnlLeft.setPreferredSize(new java.awt.Dimension(120, 100));
         pnlLeft.setLayout(new java.awt.GridLayout(3, 1, 2, 3));
 
+        btnCalculadora.setBackground(new java.awt.Color(255, 255, 255));
         btnCalculadora.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgCalculator.png")); // NOI18N
+        btnCalculadora.setBorder(null);
         btnCalculadora.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCalculadora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,7 +61,9 @@ public class StartFrame extends javax.swing.JFrame {
         });
         pnlLeft.add(btnCalculadora);
 
+        btnTemperatura.setBackground(new java.awt.Color(255, 255, 255));
         btnTemperatura.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgTemperature.png")); // NOI18N
+        btnTemperatura.setBorder(null);
         btnTemperatura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTemperatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,7 +72,9 @@ public class StartFrame extends javax.swing.JFrame {
         });
         pnlLeft.add(btnTemperatura);
 
+        btnMoney.setBackground(new java.awt.Color(255, 255, 255));
         btnMoney.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgMoney.png")); // NOI18N
+        btnMoney.setBorder(null);
         btnMoney.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMoney.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

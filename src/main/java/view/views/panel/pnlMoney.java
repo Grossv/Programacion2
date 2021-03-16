@@ -34,11 +34,13 @@ public class pnlMoney extends javax.swing.JPanel {
         btnNuevo = new javax.swing.JButton();
         lnlTitle = new javax.swing.JLabel();
         txtMoney = new javax.swing.JTextField();
-        lblElije = new javax.swing.JLabel();
+        lblcomboBox = new javax.swing.JLabel();
         cmbMoney = new javax.swing.JComboBox<>();
         txtResultado = new javax.swing.JTextField();
         lblResultado = new javax.swing.JLabel();
+        lblElije = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
@@ -96,8 +98,8 @@ public class pnlMoney extends javax.swing.JPanel {
         });
         add(txtMoney, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 140, -1));
 
-        lblElije.setText("Elije una opción");
-        add(lblElije, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 80, 20));
+        lblcomboBox.setText("Elije una opción");
+        add(lblcomboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 80, 20));
 
         cmbMoney.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "c$   -->   $", "$   -->   c$" }));
         cmbMoney.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -118,6 +120,7 @@ public class pnlMoney extends javax.swing.JPanel {
 
         lblResultado.setText("Resultado");
         add(lblResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, -1, -1));
+        add(lblElije, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 20, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMoneyActionPerformed
@@ -139,11 +142,11 @@ public class pnlMoney extends javax.swing.JPanel {
     private void btnConvertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertirActionPerformed
         double money = Double.parseDouble(txtMoney.getText());
 
-        if (cmbMoney.getSelectedItem().toString().equals("c$   -->   $")) {
+        if (cmbMoney.getSelectedItem().toString().equals("$   -->   c$")) {
             double cordobas = (35.14) * money;
             txtResultado.setText(String.valueOf(cordobas));
             lblElije.setText("c$");
-        } else if (cmbMoney.getSelectedItem().toString().equals("$   -->   c$")) {
+        } else if (cmbMoney.getSelectedItem().toString().equals("c$   -->   $")) {
             double bucks = (money / 35.14);
             txtResultado.setText(String.valueOf(bucks));
             lblElije.setText("$");
@@ -151,7 +154,9 @@ public class pnlMoney extends javax.swing.JPanel {
     }//GEN-LAST:event_btnConvertirActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        // TODO add your handling code here:
+        txtMoney.setText("");
+        txtResultado.setText("");
+        lblElije.setText("");
     }//GEN-LAST:event_btnNuevoActionPerformed
 
 
@@ -162,6 +167,7 @@ public class pnlMoney extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblElije;
     private javax.swing.JLabel lblResultado;
+    private javax.swing.JLabel lblcomboBox;
     private javax.swing.JLabel lnlTitle;
     private javax.swing.JTextField txtMoney;
     private javax.swing.JTextField txtResultado;
