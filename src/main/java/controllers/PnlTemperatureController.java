@@ -2,6 +2,8 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.DefaultComboBoxModel;
 import view.views.panel.pnlConversionTemplate;
 
@@ -12,8 +14,7 @@ import view.views.panel.pnlConversionTemplate;
 public class PnlTemperatureController implements ActionListener {
 
     private pnlConversionTemplate pnlConversionTemplate;
-    private String TEMPERATURES[] = new String[]{"Celcius", "Fahrenheit"};
-    private DefaultComboBoxModel temperatureCmbModel;
+    private final String TEMPERATURES[] = new String[]{"Celcius","Fahrenheit"};
     private DefaultComboBoxModel fromCmbModel;
     private DefaultComboBoxModel toCmbModel;
 
@@ -30,17 +31,29 @@ public class PnlTemperatureController implements ActionListener {
 
         pnlConversionTemplate.getBtnCalcular().addActionListener(this);
         pnlConversionTemplate.getBtnNew().addActionListener(this);
+        
+        pnlConversionTemplate.getCmbFrom().addItemListener((ItemEvent e) -> {
+            conversionEvent();
+        });
+        
+        pnlConversionTemplate.getCmbTo().addItemListener((ItemEvent e) -> {
+            conversionEvent();
+        });
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("Convertir")) {
-            int cmbFromIndex = pnlConversionTemplate.getCmbFrom().getSelectedIndex();
-            int cmbToIndex = pnlConversionTemplate.getCmbTo().getSelectedIndex();
-            double value = Double.parseDouble(pnlConversionTemplate.getTxtResultado().getText());
-
-            pnlConversionTemplate.getLblResult().setText("Resultado" + convertidorTemperature(value, cmbFromIndex, cmbToIndex));
+            conversionEvent();
         }
+    }
+
+    private void conversionEvent() throws NumberFormatException {
+        int cmbFromIndex = pnlConversionTemplate.getCmbFrom().getSelectedIndex();
+        int cmbToIndex = pnlConversionTemplate.getCmbTo().getSelectedIndex();
+        double value = Double.parseDouble(pnlConversionTemplate.getTxtResultado().getText());
+        
+        pnlConversionTemplate.getLblResult().setText("Resultado" + convertidorTemperature(value, cmbFromIndex, cmbToIndex));
     }
 
     private double convertidorTemperature(double value, int from, int to) {
