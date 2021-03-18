@@ -76,12 +76,21 @@ public class pnlTextEditor extends javax.swing.JPanel {
 
         txtAEditor.setColumns(20);
         txtAEditor.setRows(5);
+        txtAEditor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtAEditorKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(txtAEditor);
 
         jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtAEditorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAEditorKeyPressed
+        String contenidoTxtArea = txtAEditor.getText();
+    }//GEN-LAST:event_txtAEditorKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
