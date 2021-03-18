@@ -29,6 +29,7 @@ public class FrmEditor extends javax.swing.JFrame {
      */
     public FrmEditor() {
         countTab = 1;
+//        fileNameFilter = new FileNameExtensionFilter("*txt", "txt");
         initComponents();
     }
 
@@ -42,19 +43,15 @@ public class FrmEditor extends javax.swing.JFrame {
     private void initComponents() {
 
         tbpContent = new javax.swing.JTabbedPane();
-        try {
-            jToolBar1 =(javax.swing.JToolBar)java.beans.Beans.instantiate(getClass().getClassLoader(), "view.FrmEditor_jToolBar1");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (java.io.IOException e) {
-            e.printStackTrace();
-        }
+        jToolBar1 = new javax.swing.JToolBar();
         btnCloseTab = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnFile = new javax.swing.JMenu();
         mnINew = new javax.swing.JMenuItem();
         mnIOpen = new javax.swing.JMenuItem();
         mnISave = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem1 = new javax.swing.JMenuItem();
         mnEdit = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,7 +75,7 @@ public class FrmEditor extends javax.swing.JFrame {
         mnFile.setText("File");
 
         mnINew.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        mnINew.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgNew.png")); // NOI18N
+        mnINew.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sistemas-03\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgNew.png")); // NOI18N
         mnINew.setText("New");
         mnINew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +85,7 @@ public class FrmEditor extends javax.swing.JFrame {
         mnFile.add(mnINew);
 
         mnIOpen.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        mnIOpen.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgOpen.png")); // NOI18N
+        mnIOpen.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sistemas-03\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgOpen.png")); // NOI18N
         mnIOpen.setText("Open...");
         mnIOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +95,7 @@ public class FrmEditor extends javax.swing.JFrame {
         mnFile.add(mnIOpen);
 
         mnISave.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        mnISave.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgSave.png")); // NOI18N
+        mnISave.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sistemas-03\\Documents\\NetBeansProjects\\Programacion2\\src\\main\\java\\Source\\imgSave.png")); // NOI18N
         mnISave.setText("Save");
         mnISave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +103,16 @@ public class FrmEditor extends javax.swing.JFrame {
             }
         });
         mnFile.add(mnISave);
+        mnFile.add(jSeparator1);
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        jMenuItem1.setText("Exit");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        mnFile.add(jMenuItem1);
 
         jMenuBar1.add(mnFile);
 
@@ -152,19 +159,25 @@ public class FrmEditor extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "The text should be save in txt format");
             }
         }
+        
     }//GEN-LAST:event_mnISaveActionPerformed
 
     private void mnIOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnIOpenActionPerformed
+        pnlTextEditor pnlTextEditor1 = new pnlTextEditor();
         if (archivoSeleccionado.showDialog(null, "Open...") == JFileChooser.APPROVE_OPTION) {
             archivo = archivoSeleccionado.getSelectedFile();
             if (archivo.canRead()) {
                 if (archivo.getName().endsWith("txt")) {
                     String contenido = gestion.abrirTexto(archivo);
-//                    txtAEditor.setText(contenido);
+                    pnlTextEditor1.getTxtAEditor().setText(contenido);
                 }
             }
         }
     }//GEN-LAST:event_mnIOpenActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,17 +197,33 @@ public class FrmEditor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmEditor.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEditor
+
+.class  
+
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmEditor.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEditor
+
+.class  
+
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmEditor.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEditor
+
+.class  
+
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmEditor.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEditor
+
+.class  
+
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -209,6 +238,8 @@ public class FrmEditor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCloseTab;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu mnEdit;
     private javax.swing.JMenu mnFile;

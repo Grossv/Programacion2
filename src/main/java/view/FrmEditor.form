@@ -15,7 +15,7 @@
                   <KeyStroke key="Ctrl+N"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Usuario\Documents\NetBeansProjects\Programacion2\src\main\java\Source\imgNew.png"/>
+                  <Image iconType="2" name="C:\Users\Sistemas-03\Documents\NetBeansProjects\Programacion2\src\main\java\Source\imgNew.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="New"/>
               </Properties>
@@ -29,7 +29,7 @@
                   <KeyStroke key="Ctrl+O"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Usuario\Documents\NetBeansProjects\Programacion2\src\main\java\Source\imgOpen.png"/>
+                  <Image iconType="2" name="C:\Users\Sistemas-03\Documents\NetBeansProjects\Programacion2\src\main\java\Source\imgOpen.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Open..."/>
               </Properties>
@@ -43,12 +43,25 @@
                   <KeyStroke key="Ctrl+S"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Usuario\Documents\NetBeansProjects\Programacion2\src\main\java\Source\imgSave.png"/>
+                  <Image iconType="2" name="C:\Users\Sistemas-03\Documents\NetBeansProjects\Programacion2\src\main\java\Source\imgSave.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Save"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnISaveActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="ESCAPE"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Exit"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -97,7 +110,6 @@
     </Container>
     <Container class="javax.swing.JToolBar" name="jToolBar1">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CodeGeneration" type="java.lang.Integer" value="1"/>
         <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="FrmEditor_jToolBar1"/>
       </AuxValues>
       <Constraints>
