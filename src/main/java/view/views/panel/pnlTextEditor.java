@@ -6,7 +6,9 @@
 package view.views.panel;
 
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 /**
  *
@@ -33,10 +35,14 @@ public class pnlTextEditor extends javax.swing.JPanel {
         return lblWords;
     }
 
-    public JTextArea getTxtAEditor() {
-        return txtAEditor;
+    public JTextArea getTxtPEditor() {
+        return txtPEditor;
     }
-    
+
+    public void setTxtPEditor(JTextArea txtPEditor) {
+        this.txtPEditor = txtPEditor;
+    }
+
     
 
     /**
@@ -54,7 +60,7 @@ public class pnlTextEditor extends javax.swing.JPanel {
         lblWords = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtAEditor = new javax.swing.JTextArea();
+        txtPEditor = new javax.swing.JTextArea();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -74,23 +80,14 @@ public class pnlTextEditor extends javax.swing.JPanel {
 
         jPanel2.setLayout(new java.awt.BorderLayout());
 
-        txtAEditor.setColumns(20);
-        txtAEditor.setRows(5);
-        txtAEditor.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtAEditorKeyPressed(evt);
-            }
-        });
-        jScrollPane1.setViewportView(txtAEditor);
+        txtPEditor.setColumns(20);
+        txtPEditor.setRows(5);
+        jScrollPane1.setViewportView(txtPEditor);
 
         jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtAEditorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAEditorKeyPressed
-        String contenidoTxtArea = txtAEditor.getText();
-    }//GEN-LAST:event_txtAEditorKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -100,6 +97,6 @@ public class pnlTextEditor extends javax.swing.JPanel {
     private javax.swing.JLabel lblLetters;
     private javax.swing.JLabel lblLines;
     private javax.swing.JLabel lblWords;
-    private javax.swing.JTextArea txtAEditor;
+    private javax.swing.JTextArea txtPEditor;
     // End of variables declaration//GEN-END:variables
 }

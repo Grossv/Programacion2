@@ -6,7 +6,9 @@
 package view;
 
 import java.io.*;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.StyleConstants;
@@ -20,16 +22,17 @@ import view.ClassImplements.GestionA;
 public class FrmEditor extends javax.swing.JFrame {
 
     private int countTab;
-    JFileChooser archivoSeleccionado = new JFileChooser();
-    File archivo;
-    GestionA gestion = new GestionA();
+    JFileChooser save = new JFileChooser();
+    JFileChooser myChooser = new JFileChooser();
+    JFileChooser fc = new JFileChooser();
+    File file;
+    File fichero;
 
     /**
      * Creates new form FrmEditor
      */
     public FrmEditor() {
         countTab = 1;
-//        fileNameFilter = new FileNameExtensionFilter("*txt", "txt");
         initComponents();
     }
 
@@ -145,32 +148,53 @@ public class FrmEditor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCloseTabActionPerformed
 
     private void mnISaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnISaveActionPerformed
-        if (archivoSeleccionado.showDialog(null, "Save") == JFileChooser.APPROVE_OPTION) {
-            archivo = archivoSeleccionado.getSelectedFile();
-            if (archivo.getName().endsWith("txt")) {
-                String contenido = tbpContent.getToolTipText();
-                String respuesta = gestion.guardarTexto(archivo, contenido);
-                if (respuesta != null) {
-                    JOptionPane.showMessageDialog(null, respuesta);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Error to save the text.");
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "The text should be save in txt format");
+        pnlTextEditor pnlEditor = (pnlTextEditor) tbpContent.getSelectedComponent();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Text Files", "txt");
+        save.setFileFilter(filtro);
+
+        int seleccion = save.showSaveDialog(save);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            file = save.getSelectedFile();
+
+            try {
+                FileWriter write = new FileWriter(file);
+                
+                BufferedWriter bfw = new BufferedWriter(write);
+                PrintWriter prw = new PrintWriter(bfw);
+
+                prw.write(pnlEditor.getTxtPEditor().getText());
+
+                prw.close();
+                bfw.close();
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(tbpContent, "Error al guardar el archivo");
             }
         }
-        
     }//GEN-LAST:event_mnISaveActionPerformed
 
     private void mnIOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnIOpenActionPerformed
-        pnlTextEditor pnlTextEditor1 = new pnlTextEditor();
-        if (archivoSeleccionado.showDialog(null, "Open...") == JFileChooser.APPROVE_OPTION) {
-            archivo = archivoSeleccionado.getSelectedFile();
-            if (archivo.canRead()) {
-                if (archivo.getName().endsWith("txt")) {
-                    String contenido = gestion.abrirTexto(archivo);
-                    pnlTextEditor1.getTxtAEditor().setText(contenido);
+        pnlTextEditor PnlEditor = (pnlTextEditor) tbpContent.getSelectedComponent();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Text Files", "txt");
+        fc.setFileFilter(filtro);
+
+        //ABRIMOS LA VENTANA, GUARDAMOS LA OPCION SELECCIONADA POR EL USURARIO
+        int seleccion = fc.showOpenDialog(PnlEditor);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            //SELECCIONAMOS EL FICHERO
+            fichero = fc.getSelectedFile();
+
+            try ( FileReader fr = new FileReader(fichero)) {
+                String cadena = "";
+                int valor = fr.read();
+                while (valor != -1) {
+                    cadena = cadena + (char) valor;
+                    valor = fr.read();
                 }
+                PnlEditor.getTxtPEditor().setText(cadena);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }//GEN-LAST:event_mnIOpenActionPerformed
@@ -197,33 +221,17 @@ public class FrmEditor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmEditor
-
-.class  
-
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEditor.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmEditor
-
-.class  
-
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEditor.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmEditor
-
-.class  
-
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEditor.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmEditor
-
-.class  
-
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEditor.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
