@@ -7,6 +7,7 @@ package view;
 
 import java.io.*;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -34,6 +35,8 @@ public class FrmEditor extends javax.swing.JFrame {
     public FrmEditor() {
         countTab = 1;
         initComponents();
+        pnlTextEditor pnlTextEditor = new pnlTextEditor();
+        tbpContent.addTab("Editor" + countTab++, pnlTextEditor);
     }
 
     /**
@@ -159,7 +162,7 @@ public class FrmEditor extends javax.swing.JFrame {
 
             try {
                 FileWriter write = new FileWriter(file);
-                
+
                 BufferedWriter bfw = new BufferedWriter(write);
                 PrintWriter prw = new PrintWriter(bfw);
 
@@ -196,6 +199,8 @@ public class FrmEditor extends javax.swing.JFrame {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            pnlTextEditor pnlTextEditor = new pnlTextEditor();
+            tbpContent.addTab(getName(), pnlTextEditor);
         }
     }//GEN-LAST:event_mnIOpenActionPerformed
 

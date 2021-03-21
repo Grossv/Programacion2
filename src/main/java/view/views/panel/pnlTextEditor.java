@@ -5,10 +5,17 @@
  */
 package view.views.panel;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -43,7 +50,9 @@ public class pnlTextEditor extends javax.swing.JPanel {
         this.txtPEditor = txtPEditor;
     }
 
-    
+    public pnlTextEditor(JTextArea txtPEditor) {
+        this.txtPEditor = txtPEditor;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
