@@ -5,17 +5,9 @@
  */
 package view.views.panel;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
+
 
 /**
  *
@@ -42,17 +34,12 @@ public class pnlTextEditor extends javax.swing.JPanel {
         return lblWords;
     }
 
-    public JTextArea getTxtPEditor() {
+    public JTextPane getTxtpEditor() {
         return txtPEditor;
     }
 
-    public void setTxtPEditor(JTextArea txtPEditor) {
-        this.txtPEditor = txtPEditor;
-    }
-
-    public pnlTextEditor(JTextArea txtPEditor) {
-        this.txtPEditor = txtPEditor;
-    }
+ 
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,7 +56,7 @@ public class pnlTextEditor extends javax.swing.JPanel {
         lblWords = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtPEditor = new javax.swing.JTextArea();
+        txtPEditor = new javax.swing.JTextPane();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -89,8 +76,6 @@ public class pnlTextEditor extends javax.swing.JPanel {
 
         jPanel2.setLayout(new java.awt.BorderLayout());
 
-        txtPEditor.setColumns(20);
-        txtPEditor.setRows(5);
         jScrollPane1.setViewportView(txtPEditor);
 
         jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -106,6 +91,6 @@ public class pnlTextEditor extends javax.swing.JPanel {
     private javax.swing.JLabel lblLetters;
     private javax.swing.JLabel lblLines;
     private javax.swing.JLabel lblWords;
-    private javax.swing.JTextArea txtPEditor;
+    private javax.swing.JTextPane txtPEditor;
     // End of variables declaration//GEN-END:variables
 }
