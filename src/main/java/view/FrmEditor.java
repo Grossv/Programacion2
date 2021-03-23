@@ -30,19 +30,22 @@ import say.swing.JFontChooser;
 public class FrmEditor extends javax.swing.JFrame {
 
     private int countTab;
-    private FileNameExtensionFilter fileNameFileFilter;
-    private JFileChooser fileChooser;
-    private IOString ioString;
-    private JFontChooser fontChooser;
+    private FileNameExtensionFilter filtro;
+    private JFileChooser archivosChooser;
+    private IOString iString;
+    private JFontChooser fuentesChooser;
 
     /**
      * Creates new form FrmEditor
      */
     public FrmEditor() {
         countTab = 1;
-        fileNameFileFilter = new FileNameExtensionFilter("*txt", "txt");
+        filtro = new FileNameExtensionFilter("*txt", "txt");
 
         initComponents();
+        
+        pnlTextEditor pnlTextEditor = new pnlTextEditor();
+        tbpContent.addTab("Editor" + countTab++, pnlTextEditor);
     }
 
     /**
@@ -55,9 +58,17 @@ public class FrmEditor extends javax.swing.JFrame {
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
+        jSeparator6 = new javax.swing.JToolBar.Separator();
         btnCloseTab = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JToolBar.Separator();
         tglBold = new javax.swing.JToggleButton();
-        tglJustify = new javax.swing.JToggleButton();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
+        tglLeft = new javax.swing.JToggleButton();
+        jSeparator5 = new javax.swing.JToolBar.Separator();
+        tglCenter = new javax.swing.JToggleButton();
+        jSeparator4 = new javax.swing.JToolBar.Separator();
+        tglRight = new javax.swing.JToggleButton();
+        jSeparator7 = new javax.swing.JToolBar.Separator();
         tbpContent = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnFile = new javax.swing.JMenu();
@@ -72,6 +83,8 @@ public class FrmEditor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Editor de Texto");
 
+        jToolBar1.add(jSeparator6);
+
         btnCloseTab.setText("X");
         btnCloseTab.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCloseTab.setFocusable(false);
@@ -83,6 +96,7 @@ public class FrmEditor extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(btnCloseTab);
+        jToolBar1.add(jSeparator3);
 
         tglBold.setText("Bold");
         tglBold.setFocusable(false);
@@ -94,12 +108,43 @@ public class FrmEditor extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(tglBold);
+        jToolBar1.add(jSeparator2);
 
-        tglJustify.setText("Justify");
-        tglJustify.setFocusable(false);
-        tglJustify.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        tglJustify.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(tglJustify);
+        tglLeft.setText("Left Alignment");
+        tglLeft.setFocusable(false);
+        tglLeft.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        tglLeft.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        tglLeft.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tglLeftActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(tglLeft);
+        jToolBar1.add(jSeparator5);
+
+        tglCenter.setText("Center");
+        tglCenter.setFocusable(false);
+        tglCenter.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        tglCenter.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        tglCenter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tglCenterActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(tglCenter);
+        jToolBar1.add(jSeparator4);
+
+        tglRight.setText("Right Alignment");
+        tglRight.setFocusable(false);
+        tglRight.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        tglRight.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        tglRight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tglRightActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(tglRight);
+        jToolBar1.add(jSeparator7);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.NORTH);
         getContentPane().add(tbpContent, java.awt.BorderLayout.CENTER);
@@ -194,16 +239,16 @@ public class FrmEditor extends javax.swing.JFrame {
             return;
         }
         try {
-            int option = getFileChooser().showSaveDialog(this);
+            int option = getArchivosChooser().showSaveDialog(this);
 
             if (option == JFileChooser.CANCEL_OPTION) {
                 return;
             }
 
-            File file = getFileChooser().getSelectedFile();
-            ioString = new IOString(file);
+            File file = getArchivosChooser().getSelectedFile();
+            iString = new IOString(file);
 
-            ioString.writeString(pnlEditor.getTxtpEditor().getText(), false);
+            iString.writeString(pnlEditor.getTxtpEditor().getText(), false);
 
             tbpContent.setTitleAt(index, file.getName());
         } catch (IOException ex) {
@@ -212,18 +257,18 @@ public class FrmEditor extends javax.swing.JFrame {
     }//GEN-LAST:event_mnISaveActionPerformed
 
     private void mnIOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnIOpenActionPerformed
-        int option = getFileChooser().showOpenDialog(this);
+        int seleccionado = getArchivosChooser().showOpenDialog(this);
 
-        if (option == JFileChooser.CANCEL_OPTION) {
+        if (seleccionado == JFileChooser.CANCEL_OPTION) {
             return;
         }
 
-        File file = getFileChooser().getSelectedFile();
-        ioString = new IOString(file);
+        File file = getArchivosChooser().getSelectedFile();
+        iString = new IOString(file);
 
         pnlTextEditor pnlEditor = new pnlTextEditor();
         try {
-            pnlEditor.getTxtpEditor().setText(ioString.readString());
+            pnlEditor.getTxtpEditor().setText(iString.readString());
         } catch (IOException ex) {
             Logger.getLogger(FrmEditor.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -241,20 +286,20 @@ public class FrmEditor extends javax.swing.JFrame {
             return;
         }
 
-        int option = getFontChooser().showDialog(this);
-        if (option == JFontChooser.CANCEL_OPTION) {
+        int seleccionado = getFuentesChooser().showDialog(this);
+        if (seleccionado == JFontChooser.CANCEL_OPTION) {
             return;
         }
 
-        String text = pnlEditor.getTxtpEditor().getSelectedText();
-        if (text == null) {
+        String texto = pnlEditor.getTxtpEditor().getSelectedText();
+        if (texto == null) {
             return;
         }
 
-        Font font = getFontChooser().getSelectedFont();
-        int start = pnlEditor.getTxtpEditor().getSelectionStart();
+        Font fuente = getFuentesChooser().getSelectedFont();
+        int inicio = pnlEditor.getTxtpEditor().getSelectionStart();
         StyledDocument style = pnlEditor.getTxtpEditor().getStyledDocument();
-        pnlEditor.getTxtpEditor().setStyledDocument(getStyledDocuemt(font, style, start, text.length()));
+        pnlEditor.getTxtpEditor().setStyledDocument(getDocumentStyle(fuente, style, inicio, texto.length()));
     }//GEN-LAST:event_formatMenuActionPerformed
 
     private void tglBoldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglBoldActionPerformed
@@ -272,7 +317,7 @@ public class FrmEditor extends javax.swing.JFrame {
         StyledDocument style = pnlEditor.getTxtpEditor().getStyledDocument();
 
         Font font = new Font(Font.SERIF, tglBold.isSelected() ? Font.BOLD : Font.PLAIN, 12);
-        pnlEditor.getTxtpEditor().setStyledDocument(getStyledDocuemt(font, style, start, text.length()));
+        pnlEditor.getTxtpEditor().setStyledDocument(getDocumentStyle(font, style, start, text.length()));
     }//GEN-LAST:event_tglBoldActionPerformed
 
     private void mniTextFormatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTextFormatActionPerformed
@@ -281,8 +326,8 @@ public class FrmEditor extends javax.swing.JFrame {
             return;
         }
 
-        int option = getFontChooser().showDialog(this);
-        if (option == JFontChooser.CANCEL_OPTION) {
+        int seleccionado = getFuentesChooser().showDialog(this);
+        if (seleccionado == JFontChooser.CANCEL_OPTION) {
             return;
         }
 
@@ -291,14 +336,38 @@ public class FrmEditor extends javax.swing.JFrame {
             return;
         }
 
-        Font font = getFontChooser().getSelectedFont();
+        Font font = getFuentesChooser().getSelectedFont();
         int start = pnlEditor.getTxtpEditor().getSelectionStart();
         StyledDocument style = pnlEditor.getTxtpEditor().getStyledDocument();
-        pnlEditor.getTxtpEditor().setStyledDocument(getStyledDocuemt(font, style, start, text.length()));
+        pnlEditor.getTxtpEditor().setStyledDocument(getDocumentStyle(font, style, start, text.length()));
     }//GEN-LAST:event_mniTextFormatActionPerformed
 
-    private StyledDocument getStyledDocuemt(Font font, StyledDocument style, int start, int length) {
-        MutableAttributeSet attributeSet = getMutableAttributeSet(style, start);
+    private void tglCenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglCenterActionPerformed
+        pnlTextEditor pnlEditor = (pnlTextEditor) tbpContent.getSelectedComponent();
+        StyledDocument doc = pnlEditor.getTxtpEditor().getStyledDocument();
+        SimpleAttributeSet center = new SimpleAttributeSet();
+        StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+        doc.setParagraphAttributes(0, doc.getLength(), center, false);
+    }//GEN-LAST:event_tglCenterActionPerformed
+
+    private void tglLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglLeftActionPerformed
+        pnlTextEditor pnlEditor = (pnlTextEditor) tbpContent.getSelectedComponent();
+        StyledDocument doc = pnlEditor.getTxtpEditor().getStyledDocument();
+        SimpleAttributeSet leftAlignment = new SimpleAttributeSet();
+        StyleConstants.setAlignment(leftAlignment, StyleConstants.ALIGN_LEFT);
+        doc.setParagraphAttributes(0, doc.getLength(), leftAlignment, false);
+    }//GEN-LAST:event_tglLeftActionPerformed
+
+    private void tglRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglRightActionPerformed
+        pnlTextEditor pnlEditor = (pnlTextEditor) tbpContent.getSelectedComponent();
+        StyledDocument doc = pnlEditor.getTxtpEditor().getStyledDocument();
+        SimpleAttributeSet rightAlignment = new SimpleAttributeSet();
+        StyleConstants.setAlignment(rightAlignment, StyleConstants.ALIGN_RIGHT);
+        doc.setParagraphAttributes(0, doc.getLength(), rightAlignment, false);
+    }//GEN-LAST:event_tglRightActionPerformed
+
+    private StyledDocument getDocumentStyle(Font font, StyledDocument style, int start, int length) {
+        MutableAttributeSet attributeSet = getAttributes(style, start);
 
         attributeSet.addAttribute(StyleConstants.Bold, font.isBold());
         attributeSet.addAttribute(StyleConstants.Italic, font.isItalic());
@@ -311,28 +380,28 @@ public class FrmEditor extends javax.swing.JFrame {
         return style;
     }
 
-    private MutableAttributeSet getMutableAttributeSet(StyledDocument style, int start) {
+    private MutableAttributeSet getAttributes(StyledDocument style, int start) {
         Element element = style.getCharacterElement(start);
         AttributeSet as = element.getAttributes();
 
         return new SimpleAttributeSet(as.copyAttributes());
     }
 
-    private JFileChooser getFileChooser() {
-        if (fileChooser == null) {
-            fileChooser = new JFileChooser();
-            fileChooser.addChoosableFileFilter(fileNameFileFilter);
-            fileChooser.setFileFilter(fileNameFileFilter);
+    private JFileChooser getArchivosChooser() {
+        if (archivosChooser == null) {
+            archivosChooser = new JFileChooser();
+            archivosChooser.addChoosableFileFilter(filtro);
+            archivosChooser.setFileFilter(filtro);
         }
 
-        return fileChooser;
+        return archivosChooser;
     }
 
-    private JFontChooser getFontChooser() {
-        if (fontChooser == null) {
-            fontChooser = new JFontChooser();
+    private JFontChooser getFuentesChooser() {
+        if (fuentesChooser == null) {
+            fuentesChooser = new JFontChooser();
         }
-        return fontChooser;
+        return fuentesChooser;
     }
 
     /**
@@ -368,10 +437,8 @@ public class FrmEditor extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmEditor().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FrmEditor().setVisible(true);
         });
     }
 
@@ -381,6 +448,12 @@ public class FrmEditor extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator2;
+    private javax.swing.JToolBar.Separator jSeparator3;
+    private javax.swing.JToolBar.Separator jSeparator4;
+    private javax.swing.JToolBar.Separator jSeparator5;
+    private javax.swing.JToolBar.Separator jSeparator6;
+    private javax.swing.JToolBar.Separator jSeparator7;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu mnFile;
     private javax.swing.JMenuItem mnINew;
@@ -389,6 +462,8 @@ public class FrmEditor extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniTextFormat;
     private javax.swing.JTabbedPane tbpContent;
     private javax.swing.JToggleButton tglBold;
-    private javax.swing.JToggleButton tglJustify;
+    private javax.swing.JToggleButton tglCenter;
+    private javax.swing.JToggleButton tglLeft;
+    private javax.swing.JToggleButton tglRight;
     // End of variables declaration//GEN-END:variables
 }
