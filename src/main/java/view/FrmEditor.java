@@ -54,11 +54,11 @@ public class FrmEditor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tbpContent = new javax.swing.JTabbedPane();
         jToolBar1 = new javax.swing.JToolBar();
         btnCloseTab = new javax.swing.JButton();
         tglBold = new javax.swing.JToggleButton();
         tglJustify = new javax.swing.JToggleButton();
+        tbpContent = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnFile = new javax.swing.JMenu();
         mnINew = new javax.swing.JMenuItem();
@@ -71,7 +71,6 @@ public class FrmEditor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Editor de Texto");
-        getContentPane().add(tbpContent, java.awt.BorderLayout.CENTER);
 
         btnCloseTab.setText("X");
         btnCloseTab.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -103,6 +102,7 @@ public class FrmEditor extends javax.swing.JFrame {
         jToolBar1.add(tglJustify);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.NORTH);
+        getContentPane().add(tbpContent, java.awt.BorderLayout.CENTER);
 
         mnFile.setText("File");
 
@@ -202,7 +202,8 @@ public class FrmEditor extends javax.swing.JFrame {
 
             File file = getFileChooser().getSelectedFile();
             ioString = new IOString(file);
-            ioString.writeString(pnlEditor.getTxtPEditor().getText(), false);
+
+            ioString.writeString(pnlEditor.getTxtpEditor().getText(), false);
 
             tbpContent.setTitleAt(index, file.getName());
         } catch (IOException ex) {
@@ -222,11 +223,12 @@ public class FrmEditor extends javax.swing.JFrame {
 
         pnlTextEditor pnlEditor = new pnlTextEditor();
         try {
-            pnlEditor.getTxtPEditor().setText(ioString.readString());
+            pnlEditor.getTxtpEditor().setText(ioString.readString());
         } catch (IOException ex) {
             Logger.getLogger(FrmEditor.class.getName()).log(Level.SEVERE, null, ex);
         }
         tbpContent.addTab(file.getName(), pnlEditor);
+
     }//GEN-LAST:event_mnIOpenActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -234,6 +236,25 @@ public class FrmEditor extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void formatMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formatMenuActionPerformed
+        pnlTextEditor pnlEditor = (pnlTextEditor) tbpContent.getSelectedComponent();
+        if (pnlEditor == null) {
+            return;
+        }
+
+        int option = getFontChooser().showDialog(this);
+        if (option == JFontChooser.CANCEL_OPTION) {
+            return;
+        }
+
+        String text = pnlEditor.getTxtpEditor().getSelectedText();
+        if (text == null) {
+            return;
+        }
+
+        Font font = getFontChooser().getSelectedFont();
+        int start = pnlEditor.getTxtpEditor().getSelectionStart();
+        StyledDocument style = pnlEditor.getTxtpEditor().getStyledDocument();
+        pnlEditor.getTxtpEditor().setStyledDocument(getStyledDocuemt(font, style, start, text.length()));
     }//GEN-LAST:event_formatMenuActionPerformed
 
     private void tglBoldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglBoldActionPerformed
@@ -242,16 +263,16 @@ public class FrmEditor extends javax.swing.JFrame {
             return;
         }
 
-        String text = pnlEditor.getTxtPEditor().getSelectedText();
+        String text = pnlEditor.getTxtpEditor().getSelectedText();
         if (text == null) {
             return;
         }
 
-        int start = pnlEditor.getTxtPEditor().getSelectionStart();
-        StyledDocument style = pnlEditor.getTxtPEditor().getStyledDocument();
+        int start = pnlEditor.getTxtpEditor().getSelectionStart();
+        StyledDocument style = pnlEditor.getTxtpEditor().getStyledDocument();
 
         Font font = new Font(Font.SERIF, tglBold.isSelected() ? Font.BOLD : Font.PLAIN, 12);
-        pnlEditor.getTxtPEditor().setStyledDocument(getStyledDocuemt(font, style, start, text.length()));
+        pnlEditor.getTxtpEditor().setStyledDocument(getStyledDocuemt(font, style, start, text.length()));
     }//GEN-LAST:event_tglBoldActionPerformed
 
     private void mniTextFormatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTextFormatActionPerformed
@@ -265,15 +286,15 @@ public class FrmEditor extends javax.swing.JFrame {
             return;
         }
 
-        String text = pnlEditor.getTxtPEditor().getSelectedText();
+        String text = pnlEditor.getTxtpEditor().getSelectedText();
         if (text == null) {
             return;
         }
 
         Font font = getFontChooser().getSelectedFont();
-        int start = pnlEditor.getTxtPEditor().getSelectionStart();
-        StyledDocument style = pnlEditor.getTxtPEditor().getStyledDocument();
-        pnlEditor.getTxtPEditor().setStyledDocument(getStyledDocuemt(font, style, start, text.length()));
+        int start = pnlEditor.getTxtpEditor().getSelectionStart();
+        StyledDocument style = pnlEditor.getTxtpEditor().getStyledDocument();
+        pnlEditor.getTxtpEditor().setStyledDocument(getStyledDocuemt(font, style, start, text.length()));
     }//GEN-LAST:event_mniTextFormatActionPerformed
 
     private StyledDocument getStyledDocuemt(Font font, StyledDocument style, int start, int length) {

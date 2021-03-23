@@ -103,18 +103,6 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
   <SubComponents>
-    <Container class="javax.swing.JTabbedPane" name="tbpContent">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="FrmEditor_tbpContent"/>
-      </AuxValues>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-          <BorderConstraints direction="Center"/>
-        </Constraint>
-      </Constraints>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
-    </Container>
     <Container class="javax.swing.JToolBar" name="jToolBar1">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="FrmEditor_jToolBar1"/>
@@ -161,6 +149,18 @@
           </Properties>
         </Component>
       </SubComponents>
+    </Container>
+    <Container class="javax.swing.JTabbedPane" name="tbpContent">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="FrmEditor_tbpContent"/>
+      </AuxValues>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+          <BorderConstraints direction="Center"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
     </Container>
   </SubComponents>
 </Form>
