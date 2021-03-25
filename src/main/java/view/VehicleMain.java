@@ -25,9 +25,7 @@ public class VehicleMain {
         try {
             JsonVehicleDaoImpl jvdao = new JsonVehicleDaoImpl();
 
-            Vehicle v = new Vehicle(1234, 2015, "Jeep", "Wrangler", "Gladiator",
-                    "1T22J3L3JKKD", "RED", "BLACK", "25000", 75000F,
-                    Vehicle.Transmission.AUTOMATIC, "3.6 BItURBO", null, "ACTIVE");
+            Vehicle v = new Vehicle(1234, 2015, "Jeep", "Wrangler", "Gladiator","1T22J3L3JKKD", "RED", "BLACK", "25000", 75000F,Vehicle.Transmission.AUTOMATIC, "3.6 BItURBO", null, "ACTIVE");
 
             jvdao.create(v);
 

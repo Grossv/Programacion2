@@ -173,6 +173,14 @@ public class PnlVehicle extends javax.swing.JPanel {
         this.txtVin = txtVin;
     }
 
+    public JButton getBtnBrowser() {
+        return btnBrowser;
+    }
+
+    public void setBtnBrowser(JButton btnBrowser) {
+        this.btnBrowser = btnBrowser;
+    }
+
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -218,6 +226,7 @@ public class PnlVehicle extends javax.swing.JPanel {
         txtImagenPath = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         cmbStatus = new javax.swing.JComboBox<>();
+        btnBrowser = new javax.swing.JButton();
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -255,6 +264,8 @@ public class PnlVehicle extends javax.swing.JPanel {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(1, 1, 1, 1);
         jPanel3.add(jLabel2, gridBagConstraints);
+
+        jSYear.setModel(new javax.swing.SpinnerNumberModel(2010, null, null, 1));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -482,6 +493,12 @@ public class PnlVehicle extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(1, 1, 1, 1);
         jPanel3.add(cmbStatus, gridBagConstraints);
 
+        btnBrowser.setText("Browse");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 12;
+        jPanel3.add(btnBrowser, gridBagConstraints);
+
         jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -516,6 +533,7 @@ public class PnlVehicle extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBrowser;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> cmbExteriorColor;
