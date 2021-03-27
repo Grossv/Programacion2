@@ -11,9 +11,10 @@ import java.io.FileNotFoundException;
 import javax.swing.JComponent;
 import view.views.panel.PnlVehicle;
 
+
 /**
  *
- * @author Sistemas-03
+ * @author Usuario
  */
 public class FrmVehicle extends javax.swing.JFrame {
 
@@ -21,7 +22,7 @@ public class FrmVehicle extends javax.swing.JFrame {
     private PnlVehicleController pnlVehicleController;
 
     /**
-     * Creates new form FrmVehicle
+     * Creates new form FrmVehicles
      */
     public FrmVehicle() {
         initComponents();
@@ -41,12 +42,14 @@ public class FrmVehicle extends javax.swing.JFrame {
         btnNew = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        pnlButtom = new javax.swing.JPanel();
+        pnlBottom = new javax.swing.JPanel();
         pnlContent = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vehicle App");
 
+        jSplitPane1.setDividerLocation(140);
+        jSplitPane1.setDividerSize(15);
         jSplitPane1.setOneTouchExpandable(true);
 
         jPanel1.setLayout(new java.awt.GridLayout(5, 1, 0, 5));
@@ -66,21 +69,10 @@ public class FrmVehicle extends javax.swing.JFrame {
 
         jPanel2.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout pnlButtomLayout = new javax.swing.GroupLayout(pnlButtom);
-        pnlButtom.setLayout(pnlButtomLayout);
-        pnlButtomLayout.setHorizontalGroup(
-            pnlButtomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
-        );
-        pnlButtomLayout.setVerticalGroup(
-            pnlButtomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(pnlButtom, java.awt.BorderLayout.PAGE_START);
+        pnlBottom.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.add(pnlBottom, java.awt.BorderLayout.PAGE_START);
 
         pnlContent.setBackground(new java.awt.Color(255, 255, 255));
-        pnlContent.setForeground(new java.awt.Color(204, 204, 204));
         pnlContent.setLayout(new java.awt.BorderLayout());
         jPanel2.add(pnlContent, java.awt.BorderLayout.CENTER);
 
@@ -88,7 +80,7 @@ public class FrmVehicle extends javax.swing.JFrame {
 
         getContentPane().add(jSplitPane1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(773, 557));
+        setSize(new java.awt.Dimension(712, 598));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -98,18 +90,19 @@ public class FrmVehicle extends javax.swing.JFrame {
                 pnlVehicle = new PnlVehicle();
                 pnlVehicleController = new PnlVehicleController(pnlVehicle);
             }
-        } catch (FileNotFoundException error) {
+        } catch (FileNotFoundException ex) {
         }
-        
+
         addComponent(pnlVehicle);
     }//GEN-LAST:event_btnNewActionPerformed
 
-    private void addComponent(JComponent component){
+    private void addComponent(JComponent component) {
         pnlContent.removeAll();
-        pnlContent.add(component,BorderLayout.CENTER);
+        pnlContent.add(component, BorderLayout.CENTER);
         pnlContent.repaint();
         this.validate();
     }
+
     /**
      * @param args the command line arguments
      */
@@ -136,6 +129,7 @@ public class FrmVehicle extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrmVehicle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -151,7 +145,7 @@ public class FrmVehicle extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JPanel pnlButtom;
+    private javax.swing.JPanel pnlBottom;
     private javax.swing.JPanel pnlContent;
     // End of variables declaration//GEN-END:variables
 }

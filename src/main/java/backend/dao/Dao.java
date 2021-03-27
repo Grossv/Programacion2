@@ -11,6 +11,7 @@ import java.util.Collection;
 /**
  *
  * @author Usuario
+ * @param <T>
  */
 public interface Dao<T> {
     void create (T t) throws IOException;

@@ -21,7 +21,7 @@ public class Vehicle {
     private String interiorColor;//30
     private String miles;//7
     private float price;//7
-    private Transmission transmission;
+    private Transmission transmission;//20
     private String engine;//50
     private String image;//100
     private String status;//20
@@ -32,8 +32,8 @@ public class Vehicle {
 
     public Vehicle() {
     }
-    
-    public Vehicle(int stockNumber, int year, String make, String model, Transmission transmission, String status){
+
+    public Vehicle(int stockNumber, int year, String make, String model, Transmission transmission, String status) {
         this.stockNumber = stockNumber;
         this.year = year;
         this.make = make;
@@ -163,13 +163,4 @@ public class Vehicle {
         this.image = image;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-    
-    
 }

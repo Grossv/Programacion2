@@ -38,30 +38,31 @@ public class ValidatorMaster {
 
     //OPCION #3 (excluyendo el punto)
     public static void soloNumeros(final JTextField txtRandom) {
-        txtRandom.addKeyListener(new KeyAdapter(){
-            public void keyTyped(KeyEvent evt){
-                int numeroPresionado = (int)evt.getKeyChar();
-                
+        txtRandom.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
+                int numeroPresionado = (int) evt.getKeyChar();
+
                 //ESTE IF NO PERMITE EL INGRESO DE LETRAS Y OTROS SIMBOLOS
-                if (numeroPresionado >= 46 &&  numeroPresionado <= 57) {
-                    
+                if (numeroPresionado >= 46 && numeroPresionado <= 57) {
+
                     //ESTOS VALORES ESTAN CONFORME LA TABLA ASCII
                     if (numeroPresionado == 46) {
                         String dato = txtRandom.getText();
                         int tama = dato.length();
                         for (int i = 0; i < tama; i++) {
                             if (dato.contains(".")) {
-                                evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+                                evt.setKeyChar((char) KeyEvent.VK_CLEAR);
                             }
                         }
-                    }else if (numeroPresionado == 47) {
-                        evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+                    } else if (numeroPresionado == 47) {
+                        evt.setKeyChar((char) KeyEvent.VK_CLEAR);
                     }
-                }else{
-                    evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+                } else {
+                    evt.setKeyChar((char) KeyEvent.VK_CLEAR);
                     evt.consume();
                 }
             }
         });
     }
+    
 }

@@ -10,18 +10,20 @@ package pojo;
  * @author Usuario
  */
 public class VehicleSubModel {
+
     private String make;
     private String model;
     private String year;
     private String color;
-    private String status;
 
-    public VehicleSubModel(String make, String model, String year, String color, String status) {
+    public VehicleSubModel() {
+    }
+
+    public VehicleSubModel(String make, String model, String year, String color) {
         this.make = make;
         this.model = model;
         this.year = year;
         this.color = color;
-        this.status = status;
     }
 
     public String getMake() {
@@ -30,14 +32,6 @@ public class VehicleSubModel {
 
     public void setMake(String make) {
         this.make = make;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public String getModel() {
@@ -63,6 +57,5 @@ public class VehicleSubModel {
     public void setColor(String color) {
         this.color = color;
     }
-    
-    
+
 }

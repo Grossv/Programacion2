@@ -7,12 +7,12 @@ package backend.dao.implementation;
 
 import backend.dao.VehicleDao;
 import com.google.gson.Gson;
-import java.awt.List;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import pojo.Vehicle;
 
 /**
@@ -27,6 +27,7 @@ public class JsonVehicleDaoImpl extends RandomTemplate implements VehicleDao {
     public JsonVehicleDaoImpl() throws FileNotFoundException {
         super(new File("vehicleJson.head"), new File("vehicleJson.dat"));
         gson = new Gson();
+
     }
 
     @Override
@@ -41,6 +42,7 @@ public class JsonVehicleDaoImpl extends RandomTemplate implements VehicleDao {
 
     @Override
     public void create(Vehicle t) throws IOException {
+
         getCustomRandom().getRafH().seek(0);
         int n = getCustomRandom().getRafH().readInt();
         int k = getCustomRandom().getRafH().readInt();
@@ -77,28 +79,30 @@ public class JsonVehicleDaoImpl extends RandomTemplate implements VehicleDao {
 
     @Override
     public Collection<Vehicle> getAll() throws IOException {
-        java.util.List<Vehicle> vehicles = new ArrayList<>();
+        List<Vehicle> vehicles = new ArrayList<>();
         Vehicle vehicle = null;
-        
+
         getCustomRandom().getRafH().seek(0);
         int n = getCustomRandom().getRafH().readInt();
-        
+
         for (int i = 0; i < n; i++) {
-            long posH = 8 + (i*8);
+            long posH = 8 + (i * 8);
             getCustomRandom().getRafH().seek(posH);
-            
+
             int id = getCustomRandom().getRafH().readInt();
-            
+
             if (id <= 0) {
                 continue;
             }
-            
-            long posD = (id - 1)*SIZE;
+
+            long posD = (id - 1) * SIZE;
             getCustomRandom().getRafD().seek(posD);
             vehicle = gson.fromJson(getCustomRandom().getRafD().readUTF(), Vehicle.class);
-            
+
             vehicles.add(vehicle);
         }
+
         return vehicles;
     }
+
 }
