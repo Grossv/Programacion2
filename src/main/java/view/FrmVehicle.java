@@ -5,11 +5,13 @@
  */
 package view;
 
+import backend.dao.implementation.VehicleTableModel;
 import controllers.PnlVehicleController;
 import java.awt.BorderLayout;
 import java.io.FileNotFoundException;
 import javax.swing.JComponent;
 import view.views.panel.PnlVehicle;
+import view.views.panel.PnlVehicleView;
 
 
 /**
@@ -19,13 +21,15 @@ import view.views.panel.PnlVehicle;
 public class FrmVehicle extends javax.swing.JFrame {
 
     private PnlVehicle pnlVehicle;
+    private PnlVehicleView pnlVehicleView;
     private PnlVehicleController pnlVehicleController;
+    private VehicleTableModel vehicleTableModel;
 
     /**
      * Creates new form FrmVehicles
      */
     public FrmVehicle() {
-        initComponents();
+        initComponents();     
     }
 
     /**
@@ -63,6 +67,11 @@ public class FrmVehicle extends javax.swing.JFrame {
         jPanel1.add(btnNew);
 
         btnView.setText("View");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnView);
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -95,6 +104,18 @@ public class FrmVehicle extends javax.swing.JFrame {
 
         addComponent(pnlVehicle);
     }//GEN-LAST:event_btnNewActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        try {
+            if (pnlVehicleView == null) {
+                pnlVehicleView = new PnlVehicleView();
+//                pnlVehicleController = new PnlVehicleController(pnlVehicleView);
+            }
+        } catch (Exception ex) {
+        }
+        
+        addComponent(pnlVehicleView);
+    }//GEN-LAST:event_btnViewActionPerformed
 
     private void addComponent(JComponent component) {
         pnlContent.removeAll();

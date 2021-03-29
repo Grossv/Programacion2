@@ -6,6 +6,7 @@
 package controllers;
 
 import backend.dao.implementation.JsonVehicleDaoImpl;
+import backend.dao.implementation.VehicleTableModel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
@@ -45,6 +46,7 @@ public class PnlVehicleController {
     private DefaultComboBoxModel cmbModelStatus;
     private String status[] = new String[]{"Active", "Mantainance", "Not available"};
     private JFileChooser fileChooser;
+    private VehicleTableModel vehicleTableModel;
 
     public PnlVehicleController(PnlVehicle pnlVehicle) throws FileNotFoundException {
         this.pnlVehicle = pnlVehicle;
@@ -114,6 +116,7 @@ public class PnlVehicleController {
 
         Vehicle v = new Vehicle(stock, year, make, model, style, vin,
                 eColor, iColor, miles, price, transmission, engine, image, status);
+//        VehicleTableModel.class.arrayType();
         try {
             vehicleValidation(v);
             jvdao.create(v);

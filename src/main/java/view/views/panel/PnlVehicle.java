@@ -13,7 +13,14 @@ import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
-import vapi.ValidatorMaster;
+import de.kyrychenko.utils.vin.VinValidatorUtils;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -153,10 +160,20 @@ public class PnlVehicle extends javax.swing.JPanel {
 
         btnSave.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnSave);
 
         btnCancel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCancel);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_END);
@@ -271,6 +288,12 @@ public class PnlVehicle extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
         jPanel2.add(jLabel6, gridBagConstraints);
+
+        fmtVin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fmtVinKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
@@ -469,6 +492,40 @@ public class PnlVehicle extends javax.swing.JPanel {
         txtStock.setBorder(null);
     }//GEN-LAST:event_txtStockKeyPressed
 
+    private void fmtVinKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fmtVinKeyTyped
+//        JFormattedTextField cadena = new JFormattedTextField(fmtVin);
+//        validate(cadena);
+        try {
+            String str = fmtVin.getText();
+            validate(str);
+        } catch (Exception e) {
+            fmtVin.setBorder(new LineBorder(Color.RED, 1));
+        }
+    }//GEN-LAST:event_fmtVinKeyTyped
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        txtEngine.setText("");
+        txtImage.setText("");
+        txtStock.setText("");
+        txtStyle.setText("");
+        fmtVin.setText("");
+    }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        String filePath = "/";
+        File file = new File(filePath);
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+//            DefaultTableModel model = (DefaultTableModel)tbVehicles.getModel();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(PnlVehicle.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    public boolean validate(final String vin) {
+        return VinValidatorUtils.isValidVin(vin);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBrowse;

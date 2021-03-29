@@ -5,6 +5,9 @@
  */
 package pojo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Usuario
@@ -161,6 +164,27 @@ public class Vehicle {
 
     public void setImage(String image) {
         this.image = image;
+    }
+    
+    public List<String> toList(){
+        List<String> vehicle = new ArrayList<>();
+        
+        vehicle.add(String.valueOf(stockNumber));
+        vehicle.add(String.valueOf(year));        
+        vehicle.add(make);
+        vehicle.add(model);
+        vehicle.add(style);
+        vehicle.add(String.valueOf(vin));
+        vehicle.add(exteriorColor);
+        vehicle.add(interiorColor);
+        vehicle.add(miles);
+        vehicle.add(String.valueOf(price));
+        vehicle.add(String.valueOf(transmission));
+        vehicle.add(engine);
+        vehicle.add(image);
+        vehicle.add(status);
+        
+        return vehicle;
     }
 
 }
