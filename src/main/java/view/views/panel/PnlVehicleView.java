@@ -7,6 +7,7 @@ package view.views.panel;
 
 import backend.dao.implementation.VehicleTableModel;
 import java.awt.Rectangle;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -33,32 +34,10 @@ public class PnlVehicleView extends javax.swing.JPanel {
         setPreferredWidthColumns(3, 5, 150);
         setPreferredWidthColumns(6, 6, 200);
     }
-
-    public void bindingDataToComponents(int row){
-        PnlVehicle pnlVehicle = new PnlVehicle();
-        if (row < 0) {
-            return;
-        }
-        pnlVehicle.getTxtStock().setText(tbVehicles.getValueAt(row, 0).toString());
-        pnlVehicle.getSpnYear().setValue(tbVehicles.getValueAt(row, 1).toString());
-        pnlVehicle.getCmbMake().setSelectedItem(tbVehicles.getValueAt(row, 2).toString());
-        pnlVehicle.getCmbModel().setSelectedItem(tbVehicles.getValueAt(row, 3).toString());
-        pnlVehicle.getTxtStyle().setText(tbVehicles.getValueAt(row, 4).toString());
-        pnlVehicle.getFmtVin().setText(tbVehicles.getValueAt(row, 5).toString());
-        pnlVehicle.getCmbEColor().setSelectedItem(tbVehicles.getValueAt(row, 6).toString());
-        pnlVehicle.getCmbIColor().setSelectedItem(tbVehicles.getValueAt(row, 7).toString());
-        pnlVehicle.getSpnMiles().setValue(tbVehicles.getValueAt(row, 8).toString());
-        pnlVehicle.getSpnPrice().setValue(tbVehicles.getValueAt(row, 9).toString());
-//        pnlVehicle.getRbtnAut().set(tbVehicles.getValueAt(row, 0).toString());
-        pnlVehicle.getTxtEngine().setText(tbVehicles.getValueAt(row, 11).toString());
-        pnlVehicle.getTxtImage().setText(tbVehicles.getValueAt(row, 12).toString());
-        pnlVehicle.getCmbStatus().setSelectedItem(tbVehicles.getValueAt(row, 13).toString());
-    }
     
-    public void bindingDataToComponents(){
-        int row = tbVehicles.getSelectedRow();
-        bindingDataToComponents(row);
-    }
+    String[] titulos = {"Stock Number","Year","Make","Model","Style","VIN","EColor","IColor","Miles","Price","Transmission","Engine","Image","Status"};
+    DefaultTableModel dtm = new DefaultTableModel(null, titulos);
+    String filas[] = {};
     
     public void setSelectedRow(int row){
         tbVehicles.getSelectionModel().setSelectionInterval(row, row);

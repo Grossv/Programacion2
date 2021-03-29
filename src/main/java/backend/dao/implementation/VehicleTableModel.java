@@ -67,7 +67,7 @@ public class VehicleTableModel extends AbstractTableModel{
     }
     
     public int addRow() {
-        return addRow(new pojo.Vehicle());
+        return addRow(new Vehicle());
     }
     
     public int addRow(Vehicle row){
@@ -88,9 +88,6 @@ public class VehicleTableModel extends AbstractTableModel{
     public void loadFromJson() throws FileNotFoundException {
         Gson gson = new Gson();
         data.addAll(Arrays.asList(gson.fromJson(new FileReader("/json/vehicleData.json"), Vehicle[].class)));
-        String[] names = {"Stock Number","Year","Make","Model","Style","VIN","Ext-Color","Int-Color","Miles","Price",
-            "Transmission","Engine","Status"};
-        columNames = Arrays.asList(names);
     }
     
     public void updateData(){

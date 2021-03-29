@@ -105,4 +105,9 @@ public class JsonVehicleDaoImpl extends RandomTemplate implements VehicleDao {
         return vehicles;
     }
 
+    @Override
+    public Collection<Vehicle> findAll(String all) throws IOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

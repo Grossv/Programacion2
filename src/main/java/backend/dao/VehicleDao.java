@@ -16,4 +16,5 @@ import pojo.Vehicle;
 public interface VehicleDao extends Dao<Vehicle>{
     Vehicle findById(int id) throws IOException;
     Collection<Vehicle> findByStatus(String status) throws IOException;
+    Collection<Vehicle> findAll(String all) throws IOException;
 }

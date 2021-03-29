@@ -122,6 +122,7 @@ public class PnlVehicleController {
             jvdao.create(v);
             JOptionPane.showMessageDialog(null, "Vehicle save sucessfully.",
                     "Saved message", JOptionPane.INFORMATION_MESSAGE);
+            vehicleTableModel.addRow(v);
         } catch (IOException ex) {
             Logger.getLogger(PnlVehicleController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
