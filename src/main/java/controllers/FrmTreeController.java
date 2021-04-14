@@ -98,7 +98,7 @@ public class FrmTreeController {
         DefaultMutableTreeNode node = getSelectedTreeNode();
         if (node.isRoot()) {
             root.removeAllChildren();
-            int childAmount = treeModel.getIndexOfChild(root, this);
+            treeModel.reload();
         }else{JOptionPane.showMessageDialog(frmTreeDemo, "Can't remove all Nodes", "Warning", 0);}
     }
     
